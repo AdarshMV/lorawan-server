@@ -416,7 +416,7 @@ encode_accept(#network{netid=NetID, rx1_delay=RxDelay, cflist=CFList}, #device{a
         binary_to_hex(AppKey), binary_to_hex(AppNonce)]),
     MHDR = <<2#001:3, 0:3, 0:2>>,
     MACPayload = <<AppNonce/binary, NetID/binary, (reverse(DevAddr))/binary, 0:1,
-        RX1DROffset:3, RX2DataRate:4, RxDelay, (16#00FF0000000000000000000000000001)>>,
+        RX1DROffset:3, RX2DataRate:4, RxDelay, (encode_cflist(CFList))/binary>>,
     MIC = aes_cmac:aes_cmac(AppKey, <<MHDR/binary, MACPayload/binary>>, 4),
 
     % yes, decrypt; see LoRaWAN specification, Section 6.2.5
