@@ -1333,7 +1333,7 @@ function dashboardTemplate(leftPanel, rightPanel) {
 <div class="row">
     <div class="col-lg-12">
         <div class="page-header">
-            <h1>Dashboard</h1>
+            <h1>Narwhals</h1>
         </div>
     </div>
 </div>
